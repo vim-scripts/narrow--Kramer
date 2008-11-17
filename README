@@ -1,0 +1,11 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2446
+
+This plugin allows you to zoom into regions of a buffer by hiding everything outside the selection. Global operations like global search/replace etc. only apply to the selected region, until you widen the view again. This is useful when you have a very long function that doesn't fit the screen, and you end up in another function when searching whithout noticing (as an example). With this plugin you can zoom to that function and be sure that you keep inside it, no matter what you do.
+
+Commands:
+:Narrow (takes a region, zooms to it)
+:Widen (inserts the hidden parts again)
+
+Notes:
+As the Narrow function actually deletes the hidden text from the buffer temporarily, this action can be undone manually by the user (using "u", ":undo", ":earlier", "g-", ...), which will break the :Widen function. For this reason, the 'u' key is remapped to a "safe" undo function. Still, there are other ways to undo the narrowing, so be careful!
+Also, when in a narrowed buffer, the auto-command "BufWriteCmd" is set to a function that saves the whole file, so not only the narrowed region is saved on ".w". Don't mess with this auto-command, or you'll probably lose data!
